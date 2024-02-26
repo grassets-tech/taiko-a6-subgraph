@@ -1,0 +1,8 @@
+{
+  "holesky": {
+    "TaikoL1": {
+      "address": "0xB20BB9105e007Bd3E0F73d63D4D3dA2c8f736b77",
+      "startBlock": 700000
+    }
+  }
+}

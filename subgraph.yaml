@@ -1,0 +1,80 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: TaikoL1
+    network: holesky
+    source:
+      address: "0xB20BB9105e007Bd3E0F73d63D4D3dA2c8f736b77"
+      abi: TaikoL1
+      startBlock: 700000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AdminChanged
+        - BeaconUpgraded
+        - BlobCached
+        - BlockProposed
+        - BlockVerified
+        - BlockVerified1
+        - CrossChainSynced
+        - CrossChainSynced1
+        - EthDeposited
+        - Initialized
+        - OwnershipTransferred
+        - Paused
+        - ProvingPaused
+        - TokenCredited
+        - TokenDebited
+        - TokenDeposited
+        - TokenWithdrawn
+        - TransitionContested
+        - TransitionProved
+        - Unpaused
+        - Upgraded
+      abis:
+        - name: TaikoL1
+          file: ./abis/TaikoL1.json
+      eventHandlers:
+        - event: AdminChanged(address,address)
+          handler: handleAdminChanged
+        - event: BeaconUpgraded(indexed address)
+          handler: handleBeaconUpgraded
+        - event: BlobCached(bytes32)
+          handler: handleBlobCached
+        - event: BlockProposed(indexed uint256,indexed address,uint96,(bytes32,bytes32,bytes32,bytes32,bytes32,address,uint64,uint32,uint64,uint64,uint24,uint24,uint16,bool,bytes32),(address,uint96,uint64)[])
+          handler: handleBlockProposed
+        - event: BlockVerified(indexed uint256,indexed address,indexed address,bytes32,bytes32,uint16,uint8)
+          handler: handleBlockVerified
+        - event: CrossChainSynced(indexed uint64,indexed uint64,bytes32,bytes32)
+          handler: handleCrossChainSynced
+        - event: EthDeposited((address,uint96,uint64))
+          handler: handleEthDeposited
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Paused(address)
+          handler: handlePaused
+        - event: ProvingPaused(bool)
+          handler: handleProvingPaused
+        - event: TokenCredited(address,uint256)
+          handler: handleTokenCredited
+        - event: TokenDebited(address,uint256)
+          handler: handleTokenDebited
+        - event: TokenDeposited(uint256)
+          handler: handleTokenDeposited
+        - event: TokenWithdrawn(uint256)
+          handler: handleTokenWithdrawn
+        - event: TransitionContested(indexed uint256,(bytes32,bytes32,bytes32,bytes32),address,uint96,uint16)
+          handler: handleTransitionContested
+        - event: TransitionProved(indexed uint256,(bytes32,bytes32,bytes32,bytes32),address,uint96,uint16)
+          handler: handleTransitionProved
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: Upgraded(indexed address)
+          handler: handleUpgraded
+      file: ./src/taiko-l-1.ts

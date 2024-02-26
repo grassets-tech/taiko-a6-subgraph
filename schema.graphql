@@ -1,0 +1,223 @@
+type AdminChanged @entity(immutable: true) {
+  id: Bytes!
+  previousAdmin: Bytes! # address
+  newAdmin: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BeaconUpgraded @entity(immutable: true) {
+  id: Bytes!
+  beacon: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BlobCached @entity(immutable: true) {
+  id: Bytes!
+  blobHash: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BlockProposed @entity(immutable: true) {
+  id: Bytes!
+  blockId: BigInt! # uint256
+  assignedProver: Bytes! # address
+  livenessBond: BigInt! # uint96
+  meta_l1Hash: Bytes! # bytes32
+  meta_difficulty: Bytes! # bytes32
+  meta_blobHash: Bytes! # bytes32
+  meta_extraData: Bytes! # bytes32
+  meta_depositsHash: Bytes! # bytes32
+  meta_coinbase: Bytes! # address
+  meta_id: BigInt! # uint64
+  meta_gasLimit: BigInt! # uint32
+  meta_timestamp: BigInt! # uint64
+  meta_l1Height: BigInt! # uint64
+  meta_txListByteOffset: Int! # uint24
+  meta_txListByteSize: Int! # uint24
+  meta_minTier: Int! # uint16
+  meta_blobUsed: Boolean! # bool
+  meta_parentMetaHash: Bytes! # bytes32
+  # depositsProcessed: [Bytes!]! # tuple[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BlockVerified @entity(immutable: true) {
+  id: Bytes!
+  blockId: BigInt! # uint256
+  assignedProver: Bytes! # address
+  prover: Bytes! # address
+  blockHash: Bytes! # bytes32
+  signalRoot: Bytes! # bytes32
+  tier: Int! # uint16
+  contestations: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BlockVerified1 @entity(immutable: true) {
+  id: Bytes!
+  blockId: BigInt! # uint256
+  assignedProver: Bytes! # address
+  prover: Bytes! # address
+  blockHash: Bytes! # bytes32
+  signalRoot: Bytes! # bytes32
+  tier: Int! # uint16
+  contestations: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CrossChainSynced @entity(immutable: true) {
+  id: Bytes!
+  syncedInBlock: BigInt! # uint64
+  blockId: BigInt! # uint64
+  blockHash: Bytes! # bytes32
+  signalRoot: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CrossChainSynced1 @entity(immutable: true) {
+  id: Bytes!
+  syncedInBlock: BigInt! # uint64
+  blockId: BigInt! # uint64
+  blockHash: Bytes! # bytes32
+  signalRoot: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EthDeposited @entity(immutable: true) {
+  id: Bytes!
+  deposit_recipient: Bytes! # address
+  deposit_amount: BigInt! # uint96
+  deposit_id: BigInt! # uint64
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Initialized @entity(immutable: true) {
+  id: Bytes!
+  version: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Paused @entity(immutable: true) {
+  id: Bytes!
+  account: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProvingPaused @entity(immutable: true) {
+  id: Bytes!
+  paused: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenCredited @entity(immutable: true) {
+  id: Bytes!
+  to: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenDebited @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenDeposited @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenWithdrawn @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TransitionContested @entity(immutable: true) {
+  id: Bytes!
+  blockId: BigInt! # uint256
+  tran_parentHash: Bytes! # bytes32
+  tran_blockHash: Bytes! # bytes32
+  tran_signalRoot: Bytes! # bytes32
+  tran_graffiti: Bytes! # bytes32
+  contester: Bytes! # address
+  contestBond: BigInt! # uint96
+  tier: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TransitionProved @entity(immutable: true) {
+  id: Bytes!
+  blockId: BigInt! # uint256
+  tran_parentHash: Bytes! # bytes32
+  tran_blockHash: Bytes! # bytes32
+  tran_signalRoot: Bytes! # bytes32
+  tran_graffiti: Bytes! # bytes32
+  prover: Bytes! # address
+  validityBond: BigInt! # uint96
+  tier: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Unpaused @entity(immutable: true) {
+  id: Bytes!
+  account: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Upgraded @entity(immutable: true) {
+  id: Bytes!
+  implementation: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
